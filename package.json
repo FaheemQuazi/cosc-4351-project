@@ -1,0 +1,25 @@
+{
+  "name": "cosc-4351-project",
+  "version": "1.0.0",
+  "description": "COSC 4351 Group Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FaheemQuazi/cosc-4351-project.git"
+  },
+  "author": "FaheemQuazi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FaheemQuazi/cosc-4351-project/issues"
+  },
+  "homepage": "https://github.com/FaheemQuazi/cosc-4351-project#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1"
+  }
+}
