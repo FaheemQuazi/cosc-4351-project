@@ -14,7 +14,7 @@ routes.get('/login', (req, res) => {
 routes.get('/success', (req, res) => {
     // TODO: Redirect to portal home or admin based on user type
     req.session['loggedIn'] = true;
-    res.send('post login (login success)');
+    res.send('post login (login successful)');
 });
 
 routes.get('/err', (req, res) => {
