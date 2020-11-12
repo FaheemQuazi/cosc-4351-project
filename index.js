@@ -49,7 +49,9 @@ app.use('/portal', require('./routes/portal'));
 
 /* Base Route */
 app.get('/', (req, res)=>{
-    res.render('home');
+    res.render('home', {
+        appURL: appURL
+    });
 });
 
 /* Start */
