@@ -1,30 +1,41 @@
 // Owner: Faheem Quazi
 
 const routes = require('express').Router();
+const passport = require('passport');
+const querystring = require('querystring');
+var appURL = require('./../appURL')();
 
-routes.get('/login', (req, res) => {
-    if (req.session['loggedIn'] == true) {
-        res.redirect('/auth/success');
-    } else { 
-        // TODO: Add SSO middleware
-        res.send('login');
-    }
+routes.get('/login', passport.authenticate('auth0', {
+  scope: 'openid email profile'
+}), function (req, res) {
+  res.redirect('/');
 });
 
-routes.get('/success', (req, res) => {
-    // TODO: Redirect to portal home or admin based on user type
-    req.session['loggedIn'] = true;
-    res.send('post login (login success)');
-});
-
-routes.get('/err', (req, res) => {
-    req.session['loggedIn'] = false;
-    res.send('post login (login failed)');
+routes.get('/callback', (req, res, next) => {
+    passport.authenticate('auth0', function (err, user, info) {
+        if (err) { return next(err); }
+        if (!user) { return res.redirect('/auth/login'); }
+        req.logIn(user, function (err) {
+            console.log("User", user.displayName, "logged in with roles", user.permissions);
+            res.redirect('/portal/home');
+        });
+    })(req, res, next);
 });
 
 routes.get('/logout', (req, res) => {
-    req.session['loggedIn'] = false;
-    res.redirect('/');
+    console.log("User", req.user.displayName, "logged out");
+    req.logout();
+
+    var returnTo = appURL
+    var logoutURL = new URL(
+        ("https://" + process.env["COSC_AUTH0_DOMAIN"] + "/v2/logout")
+    );
+    logoutURL.search = querystring.stringify({
+        client_id: process.env["COSC_AUTH0_CLIENT_ID"],
+        returnTo: returnTo
+    });
+
+    res.redirect(logoutURL);
 });
 
 module.exports = routes;

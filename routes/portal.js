@@ -3,18 +3,19 @@
 const routes = require('express').Router();
 
 routes.get('/home', (req, res) => {
-    if (req.session['loggedIn'] == true) {
-        res.send('home route portal');
+    if (req.user) {
+        if(req.user.permissions.includes('ADMIN')) {
+            res.render('admin', {
+                name: req.user.displayName
+            });
+        } else {
+            res.render('portal', {
+                name: req.user.displayName,
+                roles: req.user.permissions
+            });
+        }
     } else {
         res.send('not logged in');
-    }
-});
-
-routes.get('/admin', (req, res) => {
-    if (req.session['loggedIn'] == true && req.session['admin'] == true) {
-        res.send('admin route portal');
-    } else {
-        res.send('not logged in or not admin');
     }
 });
 
