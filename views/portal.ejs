@@ -5,9 +5,21 @@
 <title>Post Login User</title>
 </head>
 <body>
-<p>Post Login User View</p>
+<p><b>Link Portal</b></p>
 <p>User: <%= name %></p>
-<p>Role: <%= JSON.stringify(roles) %></p>
+<p>Roles: <% if (roles.length == 0) { %>None Assigned<% } else { %><%= JSON.stringify(roles) %><% } %></p>
+<p>
+Services: 
+<% if (links.length == 0) { %>
+None Available
+<% } else { %>
+<ul>
+    <% links.forEach(link => { %>
+    <li><a href="<%= link.url %>" target="_blank"><%= link.name %></a></li>
+    <% }); %>
+</ul>
+<% } %>
+<p>
 <a href="/auth/logout">Log Out</a>
 </body>
 </html>
