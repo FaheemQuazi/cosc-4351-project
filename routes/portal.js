@@ -8,7 +8,7 @@ const path = require('path');
 const adapter = new FileSync(path.join(__dirname, '../links.json'));
 const db = low(adapter);
 
-db.defaults({"links": []}).write();
+db.defaults({"links": []});
 
 routes.get('/home', (req, res) => {
     if (req.user) {
