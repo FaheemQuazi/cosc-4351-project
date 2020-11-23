@@ -2,24 +2,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Post Login User</title>
+    <title>Post Login User</title>
+    <link href="/portal.css" rel="stylesheet"/>
 </head>
 <body>
-<p><b>Link Portal</b></p>
-<p>User: <%= name %></p>
-<p>Roles: <% if (roles.length == 0) { %>None Assigned<% } else { %><%= JSON.stringify(roles) %><% } %></p>
-<p>
-Services: 
-<% if (links.length == 0) { %>
-None Available
-<% } else { %>
-<ul>
-    <% links.forEach(link => { %>
-    <li><a href="<%= link.url %>" target="_blank"><%= link.name %></a></li>
-    <% }); %>
-</ul>
-<% } %>
-<p>
-<a href="/auth/logout">Log Out</a>
+    <div class = "header">
+        <p><b>Welcome <%= name %></b></p>
+    </div>
+    <div class = "content">
+        <p>Roles: <% if (roles.length == 0) { %>None Assigned<% } else { %><%= JSON.stringify(roles) %><% } %></p>
+        <p>
+        Services: 
+        <% if (links.length == 0) { %>
+        None Available
+        <% } else { %>
+        <ul>
+            <% links.forEach(link => { %>
+            <li><a href="<%= link.url %>" target="_blank"><%= link.name %></a></li>
+            <% }); %>
+        </ul>
+        <% } %>
+        <p></p>
+        <a href="/auth/logout">Log Out</a>
+    </div>
 </body>
 </html>
