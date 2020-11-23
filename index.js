@@ -10,7 +10,7 @@ const jsonwebtoken = require('jsonwebtoken');
 var app = express();
 
 /* Configure ExpressJS */
-app.use(express.static('./public')); // Static CSS/JS/image resources that should always be accessible
+app.use(express.static(path.join(__dirname, '/public'))); // Static CSS/JS/image resources that should always be accessible
 app.set('view engine', 'ejs'); // Set the template engine
 app.set('views', path.join(__dirname, 'views')); // Set the path to grab views
 app.use(session({secret: "itsnotreallyasecretifitsopensource"})); // Session Management
