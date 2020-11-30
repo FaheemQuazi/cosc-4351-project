@@ -1,0 +1,45 @@
+<!-- The Admin portal to manage roles -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Portal</title>
+</head>
+<body>
+    <div class = "header">
+        <p><b>Link Manager <%= name %></b></p>
+    </div>
+    <div class = "content">
+        <i><%= msg %></i>
+        <table>
+            <tr>
+                <form>
+                    <td><input type="text" name="name" placeholder="Name" /></td>
+                    <td><input type="text" name="url" placeholder="URL" /></td>
+                    <td><input type="text" name="role" placeholder="Role" /></td>
+                    <td>
+                        <input type="submit" formaction="/portal/admin/add" value="Add"/>
+                    </td>
+                </form>
+            </tr>
+            <% links.forEach(link => { %>
+            <tr>
+                <form>
+                    <input type="hidden" name="id" value="<%= link.id %>" />
+                    <td><input type="text" name="name" value="<%= link.name %>" /></td>
+                    <td><input type="text" name="url" value="<%= link.url %>" /></td>
+                    <td><input type="text" name="role" value="<%= link.role %>" /></td>
+                    <td>
+                        <input type="submit" formaction="/portal/admin/update" value="Save"/>
+                        <input type="submit" formaction="/portal/admin/delete" value="Delete"/>
+                    </td>
+                </form>
+            </tr>
+            <% }); %>
+        </table> 
+        <form action="/auth/logout">
+            <input type="submit" formaction="/portal/home" value="Back to Portal" />
+            <input type="submit" value="Log Out" />
+        </form>
+    </div>
+</body>
+</html>
