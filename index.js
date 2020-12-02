@@ -1,5 +1,8 @@
-// Owner: Faheem Quazi
-
+/**
+ * index.js: Main File
+ * 
+ * Faheem Quazi
+ */
 const express = require('express');
 const session = require('express-session');
 const path = require('path');

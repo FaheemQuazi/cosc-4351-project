@@ -1,3 +1,9 @@
+/**
+ * appURL.js : dynamically get the URL/domain of the host
+ * 
+ * Faheem Quazi
+ */
+
 const { execSync } = require("child_process");
 
 module.exports = () => {
