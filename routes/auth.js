@@ -1,4 +1,9 @@
-// Owner: Faheem Quazi
+/**
+ * auth.js : Authentication Router
+ * - Handles Auth Routes and role acquisition from auth0
+ * 
+ * Faheem Quazi
+ */
 
 const routes = require('express').Router();
 const passport = require('passport');

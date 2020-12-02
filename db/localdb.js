@@ -1,5 +1,9 @@
-// Adapted from https://github.com/typicode/lowdb/blob/master/src/adapters/FileSync.js
-// Modified to work on read-only deployments (i.e. writing is not allowed)
+/**
+ * Adapted from https://github.com/typicode/lowdb/blob/master/src/adapters/FileSync.js
+ * Modified to work on read-only deployments (i.e. on Vercel)
+ * 
+ * Faheem Quazi
+ */
 
 const fs = require('graceful-fs');
 const Base = require('lowdb/adapters/Base');

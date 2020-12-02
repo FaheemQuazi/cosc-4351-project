@@ -1,4 +1,9 @@
-// Owner: Faheem Quazi
+/**
+ * portal.js : Portal Router
+ * - Handles Portal Interface, Link Database, and Link Manager Interface
+ * 
+ * Faheem Quazi
+ */
 
 const routes = require('express').Router();
 const low = require('lowdb');
